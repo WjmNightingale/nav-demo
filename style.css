@@ -1,77 +1,139 @@
 * {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
+
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
-kbd {
-  border: 1px solid red;
-  width: 4em;
-  height: 4em;
-  display: inline-block;
-  text-transform: uppercase;
-  position: relative;
+
+div {
+    box-sizing: border-box;
 }
-kbd > button {
-  position: absolute;
-  right: 0;
-  bottom: 0;
+
+body {
+    background: #d6dee5 url(wall.jpg) no-repeat center center;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.wrapper {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 5px;
+    /* border: 1px solid orange; */
+}
+
+.row {
+    padding: 5px 5px;
+    margin:  0px 20px;
+    /* border: 1px solid blue; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.wrapper > div:first-child {
+  margin-right: -20px;
+}
+
+.feature {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* border: 1px solid black; */
+    padding: 0 4px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 2px;
+    opacity: 0;
+}
+kbd:hover > .feature {
+  opacity: 1;
+}
+.row:last-child > kbd:last-child > .feature {
   display: none;
 }
-kbd:hover> button {
-  display: inline-block;
+
+.icon {
+    width: 10px;
+    height: 10px;
+    fill: currentColor;
+    overflow: hidden;
 }
-body {
-  background: grey url(wall.jpg) no-repeat center center;
+
+/*键盘按键css*/
+
+kbd {
+    /* border: 1px solid red; */
+    display: inline-block;
+    position: relative;
+    margin: 10px;
+    width: 50px;
+    height: 50px;
+    background: rgb(250, 250, 250);
+    border-radius: 6px;
+    box-shadow: 0px 1px 0 1px rgba(177, 177, 177, 1), 0px 2px 0 1px rgba(151, 151, 151, 1), 0px 3px 0 1px rgba(101, 101, 101, 1), 0px 4px 2px 3px rgba(30, 30, 30, 1);
 }
-main {
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+.row:last-child > kbd:last-child {
+    display: inline-block;
+    position: relative;
+    margin: 10px 10px 10px 25px;
+    width: 120px;
+    height: 50px;
+    background: rgb(250, 250, 250);
+    border-radius: 6px;
+    box-shadow: 0px 1px 0 1px rgba(177, 177, 177, 1), 0px 2px 0 1px rgba(151, 151, 151, 1), 0px 3px 0 1px rgba(101, 101, 101, 1), 0px 4px 2px 3px rgba(30, 30, 30, 1);
 }
-#main {
-  display: inline-block;
+
+kbd:hover {
+  transform: scale(1.2)
 }
-#main > div:nth-child(2) {
-  margin-left: -22px;
+
+kbd>span {
+    color: #373737;
+    font-size: 26px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    display: inline-block;
+    margin: 14px 0 0 18px;
 }
-#main > div:nth-child(3) {
-  margin-left: -80px;
+
+.row:last-child > kbd:last-child > span {
+  font-size: 20px;
+  margin: 14px 0 0 14px;
 }
-.wrapper {
-  background: rgba(255,255,255,0.2);
-  border-radius: 10px;
+
+kbd>img {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: 2px;
+    top: 2px;
+    /* border: 1px solid red; */
 }
-.key {
-  width: 50px;
-  height: 40px;
-  background: linear-gradient(to bottom,#292929 0%,#111111 100%);
-  border: 1px solid #373737;
-  border-radius: 6px;
-  box-shadow: 0 0 0 1px #1A1B1C,0 0 0 2px #1F2020,0 3px 0 2px #080808;
-  color: #C5C5C5;
-  position: relative;
-  font-size: 16px;
-  font-family: Arial, Helvetica, sans-serif
+
+.row:last-child > kbd:last-child > img {
+  display: none;
 }
-.row {
-  margin: 20px;
-}
-.row .key {
-  margin: 0 10px;
-}
-.key img {
-  width: 16px;
-  height: 16px;
-  position: absolute;
-  left: 4px;
-  bottom: 2px;
-}
-.key .text {
-  position: absolute;
-  left: 4px;
-  top: 2px;
+
+/*黑色键盘*/
+
+.black {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(to bottom, #292929 0%, #111111 100%);
+    border: 1px solid #373737;
+    box-shadow: 0 0 2px 5px #1A1B1C, 0 0 0 2px #1F2020, 0 3px 0 2px #080808;
+    border-radius: 6px;
+    color: #C5C5C5;
+    position: relative;
+    font-size: 32px;
+    font-family: Arial, Helvetica, sans-serif;
 }
