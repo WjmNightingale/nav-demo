@@ -1,5 +1,5 @@
 //初始化数据
-// localStorage.clear()
+localStorage.clear()
 var hashA = init()
 var keys = hashA['keys']
 var hash = hashA['hash']
@@ -67,8 +67,18 @@ function bindReset() {
         }, false)
     })
 }
+
+function bindRestore() {
+    let restoreButton = document.querySelector('#restore')
+    restoreButton.addEventListener('click',(e) => {
+        localStorage.clear()
+        location.reload(true)
+        alert('即将恢复默认键位')
+    },false)
+}
 bindEdit()
 bindReset()
+bindRestore()
 
 function createImg(domain) {
     var img = tag('img')
@@ -88,7 +98,7 @@ function createImg(domain) {
     return img
 }
 
-function init() {
+function restoreDefault() {
     var keys = {
         '0': {
             0: '1',
@@ -156,7 +166,84 @@ function init() {
         'b': 'baidu.com',
         'm': 'developer.mozilla.org'
     }
+    return {
+        "keys": keys,
+        "hash": hash
+    }
+}
+
+function init() {
+    console.log('init----')
+    var keys = {
+        '0': {
+            0: '1',
+            1: '2',
+            2: '3',
+            3: '4',
+            4: '5',
+            5: '6',
+            6: '7',
+            7: '8',
+            8: '9',
+            9: '0',
+            length: 10
+        },
+        '1': {
+            0: 'q',
+            1: 'w',
+            2: 'e',
+            3: 'r',
+            4: 't',
+            5: 'y',
+            6: 'u',
+            7: 'i',
+            8: 'o',
+            9: 'p',
+            length: 10
+        },
+        '2': {
+            0: 'a',
+            1: 's',
+            2: 'd',
+            3: 'f',
+            4: 'g',
+            5: 'h',
+            6: 'j',
+            7: 'k',
+            8: 'l',
+            length: 9
+        },
+        '3': {
+            0: 'z',
+            1: 'x',
+            2: 'c',
+            3: 'v',
+            4: 'b',
+            5: 'n',
+            6: 'm',
+            7: 'restore',
+            length: 8
+        },
+        'length': 4
+    }
+    var hash = {
+        'q': 'qq.com',
+        'w': 'weibo.com',
+        'e': '163.com',
+        't': 'taobao.com',
+        'i': 'www.ifeng.com',
+        'a': 'iqiyi.com/',
+        'g': 'github.com',
+        'd': 'douban.com/',
+        'j': 'www.jd.com',
+        'l': 'bilibili.com',
+        'z': 'zhihu.com',
+        'b': 'baidu.com',
+        'm': 'developer.mozilla.org'
+    }
+    console.log('246')
     var hashInLocalStorage = getFromLocalStorage('nav')
+    console.log('247')
     if (hashInLocalStorage) {
         hash = hashInLocalStorage
     }
