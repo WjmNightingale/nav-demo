@@ -17,8 +17,8 @@ ul {
 }
 
 body {
-    background: #d6dee5 url(wall.jpg) no-repeat center center;
-    background: #d6dee5;
+    background: #d6dee5 url(bg.png) no-repeat center center;
+    /* filter: blur(1px); */
 }
 
 .container {
@@ -27,13 +27,12 @@ body {
     justify-content: center;
     align-items: center;
     /* height: 100vh; */
-    border: 1px solid red;
     padding: 10px 10px;
+    
 }
 
 header {
-    border: 1px solid orange;
-    margin: 10px 0 20px 0;
+    margin: 30px 0 40px 0;
     padding: 5px 5px;
     display: flex;
     flex-direction: row;
@@ -49,11 +48,12 @@ header .search {
 }
 
 header .search>input {
+    width: 400px;
     display: inline-block;
     outline: none;
     border-style: none;
     line-height: 28px;
-    font-size: 26px;
+    font-size: 20px;
     /* margin-right: 10px; */
     color: #353535;
     padding: 8px 8px;
@@ -79,8 +79,7 @@ header .search>svg:hover {
 }
 
 header>.action {
-    border: 1px solid red;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 header .action>button {
@@ -96,31 +95,33 @@ header .action>button {
     border-radius: 6px;
     box-shadow: 0px 1px 0 1px rgba(177, 177, 177, 1), 0px 2px 0 1px rgba(151, 151, 151, 1), 0px 3px 0 1px rgba(101, 101, 101, 1), 0px 4px 2px 3px rgba(30, 30, 30, 1)
 }
-header .action>button:focus {
-  outline: none;
+header .action>button:hover {
+  /* outline: none; */
   color: #FF0000;
   transform: scale(1.1);
   transition: all 0.3s;
+  cursor: pointer;
+}
+header .action>button:focus {
+    outline: none;
 }
 
 main {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid blue;
 }
 
 footer {
-    border: 1px solid aqua;
-    margin: 40px 0 0 0;
+    margin: 50px 0 0 0;
     display: flex;
     flex-direction: column;
-   align-items: center;
+    align-items: center;
 }
 
 footer>span {
     display: inline-block;
-    font-size: 28px;
+    font-size: 18px;
     color: #353535;
 }
 
@@ -160,6 +161,9 @@ footer>span {
 
 kbd:hover>.feature {
     opacity: 1;
+}
+kbd:hover>.feature > svg {
+    cursor: pointer;
 }
 
 .row:last-child>kbd:last-child>.feature {
@@ -223,26 +227,6 @@ kbd>img {
     left: 2px;
     top: 2px;
     /* border: 1px solid red; */
-}
-
-kbd > .popover {
-    position: absolute;
-    bottom: 100%;
-    right: -2px;
-    background-color: #e6686a;
-    font-size: 6px;
-    margin: 0;
-    padding: 0;
-}
-kbd > .popover > .triangle {
-    display: block;
-    width: 0;
-    border: 6px solid transparent;
-    border-top-width: 0;
-    border-left-color: #e6686a;
-    position: absolute;
-    left: 4px;
-    top: 100%;
 }
 
 .row:last-child>kbd:last-child>img {

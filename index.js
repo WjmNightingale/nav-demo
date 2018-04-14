@@ -1,5 +1,5 @@
 //初始化数据
-localStorage.clear()
+// localStorage.clear()
 var hashA = init()
 var keys = hashA['keys']
 var hash = hashA['hash']
@@ -27,19 +27,11 @@ function createSpan(textContent) {
 }
 
 function bindEdit() {
-    console.log('111')
     let editButtons = document.querySelectorAll('#edit')
-    console.log(editButtons)
-    console.log('222')
     editButtons.forEach((editButton) => {
         editButton.addEventListener('click', (e) => {
-            console.log(e.target)
             let targetImg = e.target.parentNode.previousSibling.previousSibling
-            console.log(targetImg)
             let key = e.target.parentNode.previousSibling.textContent
-            console.log(key)
-            // let editSite = 'www'
-            // console.log(`http://${editSite}/favicon.ico`)
             var editSite = prompt('请输入新的自定义网址')
             if (editSite) {
                 hash[key] = editSite
@@ -53,6 +45,20 @@ function bindEdit() {
         }, false)
     })
 }
+
+function bindKbdEdit() {
+    document.addEventListener('keydown',(e) => {
+        // e.preventDefault()
+        if (e.ctrlKey && e.keyCode === 69 ) {
+            alert('修改')
+        } else if (e.ctrlKey && e.keyCode === 68) {
+            alert('重置')
+        } else if (e.ctrlKey && e.keyCode === 82) {
+            alert('恢复默认值')
+        }
+    },false)
+}
+bindKbdEdit()
 
 function bindReset() {
     let resetButtons = document.querySelectorAll('#reset')
@@ -70,30 +76,50 @@ function bindReset() {
 
 function bindRestore() {
     let restoreButton = document.querySelector('#restore')
-    restoreButton.addEventListener('click',(e) => {
+    restoreButton.addEventListener('click', (e) => {
         localStorage.clear()
         location.reload(true)
         alert('即将恢复默认键位')
-    },false)
+    }, false)
 }
 
 function bindHover() {
     let kbds = document.querySelectorAll('.wrapper kbd')
     kbds.forEach((kbd) => {
-        // console.log(kbd)
-        kbd.addEventListener('mouseover',(e) => {
-            console.log('悬浮事件')
-            let key = kbd.childNodes[2].textContent
+        kbd.addEventListener('mouseover', (e) => {
+            let key = kbd.childNodes[1].textContent
             let titleText = hash[key]
-            console.log(titleText)
+            if (titleText === undefined) {
+                titleText = '该键未关联导航网址'
+            }
+            if (kbd.childNodes[1].id === 'restore') {
+                titleText = '使用默认键位导航'
+            }
             kbd.title = titleText
-        },false)
+        }, false)
     })
+}
+function bindAction() {
+    let actionButton = document.querySelector('.action')
+    let engineData = JSON.parse(localStorage.getItem('engine'))
+    actionButton.addEventListener('click',(e) => {
+       let key = e.target.value
+       let url = engineData[key]
+       let keyword = document.querySelector('.search > input').value
+       console.log(typeof keyword)
+       if (keyword === '') {
+           alert('请输入搜索的关键词')
+       } else {
+        url = url + keyword
+        window.open(url, '_blank')
+       }
+    },false)
 }
 bindEdit()
 bindReset()
 bindRestore()
 bindHover()
+bindAction()
 
 function createImg(domain) {
     var img = tag('img')
@@ -167,7 +193,6 @@ function restoreDefault() {
         'length': 4
     }
     var hash = {
-        'q': 'qq.com',
         'w': 'weibo.com',
         'e': '163.com',
         't': 'taobao.com',
@@ -181,9 +206,13 @@ function restoreDefault() {
         'b': 'baidu.com',
         'm': 'developer.mozilla.org'
     }
+    // var searchEngine = {
+    //     'g': 'https://www.google.com/search?q=',
+    //     'b': 'https://www.bing.com/search?q='
+    // }
     return {
         "keys": keys,
-        "hash": hash
+        "hash": hash,
     }
 }
 
@@ -242,7 +271,6 @@ function init() {
         'length': 4
     }
     var hash = {
-        'q': 'qq.com',
         'w': 'weibo.com',
         'e': '163.com',
         't': 'taobao.com',
@@ -253,50 +281,41 @@ function init() {
         'j': 'www.jd.com',
         'l': 'bilibili.com',
         'z': 'zhihu.com',
-        'b': 'baidu.com'
+        'b': 'baidu.com',
+        'm': 'developer.mozilla.org'
     }
-    console.log('246')
+    var searchEngine = {
+        'g': 'https://www.google.com/search?q=',
+        'b': 'https://www.bing.com/search?q='
+    }
+    localStorage.setItem('engine',JSON.stringify(searchEngine))
     var hashInLocalStorage = getFromLocalStorage('nav')
-    console.log('247')
     if (hashInLocalStorage) {
         hash = hashInLocalStorage
     }
     return {
         "keys": keys,
-        "hash": hash
+        "hash": hash,
     }
 }
 
 function generateKeyboard(keys, hash) {
     let keysLength = keys['length']
-    console.log('keys--',keysLength)
     for (var i = 0; i < keysLength; i = i + 1) {
-        console.log('第' + i + '次循环')
         var rowDiv = tag('div')
         rowDiv.className = 'row'
         wrapper.appendChild(rowDiv)
 
         var row = keys[i]
         let rowLength = row['length']
-        console.log('row--',rowLength)
+
         for (var j = 0; j < rowLength; j = j + 1) {
-            console.log('i--',i)
             // kbd > img
             var img = createImg(hash[row[j]])
-
-            // kbd > popover
-            var popover = tag('span')
-            popover.className = 'popover'
-            popover.textContent = 'bilibili.com'
-
-            // kbd > popover > triangle
-            var triangle = tag('span')
-            triangle.className = 'triangle'
-            popover.appendChild(triangle)
-
             // kbd > span
             var span = createSpan(row[j])
-            if (i === keysLength-1 && j === rowLength-1) {
+
+            if (i === keysLength - 1 && j === rowLength - 1) {
                 // 标记restore
                 span.id = row[j]
             }
@@ -316,11 +335,10 @@ function generateKeyboard(keys, hash) {
 
             // kbd
             var kbd = tag('kbd')
+
             kbd.appendChild(img)
-            kbd.appendChild(popover)
             kbd.appendChild(span)
             kbd.appendChild(featureDiv)
-
             rowDiv.appendChild(kbd)
 
         }
