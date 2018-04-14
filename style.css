@@ -113,6 +113,15 @@ main {
 footer {
     border: 1px solid aqua;
     margin: 40px 0 0 0;
+    display: flex;
+    flex-direction: column;
+   align-items: center;
+}
+
+footer>span {
+    display: inline-block;
+    font-size: 28px;
+    color: #353535;
 }
 
 .wrapper {
@@ -214,6 +223,26 @@ kbd>img {
     left: 2px;
     top: 2px;
     /* border: 1px solid red; */
+}
+
+kbd > .popover {
+    position: absolute;
+    bottom: 100%;
+    right: -2px;
+    background-color: #e6686a;
+    font-size: 6px;
+    margin: 0;
+    padding: 0;
+}
+kbd > .popover > .triangle {
+    display: block;
+    width: 0;
+    border: 6px solid transparent;
+    border-top-width: 0;
+    border-left-color: #e6686a;
+    position: absolute;
+    left: 4px;
+    top: 100%;
 }
 
 .row:last-child>kbd:last-child>img {

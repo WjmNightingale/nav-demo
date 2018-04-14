@@ -76,9 +76,24 @@ function bindRestore() {
         alert('即将恢复默认键位')
     },false)
 }
+
+function bindHover() {
+    let kbds = document.querySelectorAll('.wrapper kbd')
+    kbds.forEach((kbd) => {
+        // console.log(kbd)
+        kbd.addEventListener('mouseover',(e) => {
+            console.log('悬浮事件')
+            let key = kbd.childNodes[2].textContent
+            let titleText = hash[key]
+            console.log(titleText)
+            kbd.title = titleText
+        },false)
+    })
+}
 bindEdit()
 bindReset()
 bindRestore()
+bindHover()
 
 function createImg(domain) {
     var img = tag('img')
@@ -157,9 +172,9 @@ function restoreDefault() {
         'e': '163.com',
         't': 'taobao.com',
         'i': 'www.ifeng.com',
-        'a': 'iqiyi.com/',
+        'a': 'iqiyi.com',
         'g': 'github.com',
-        'd': 'douban.com/',
+        'd': 'douban.com',
         'j': 'www.jd.com',
         'l': 'bilibili.com',
         'z': 'zhihu.com',
@@ -232,14 +247,13 @@ function init() {
         'e': '163.com',
         't': 'taobao.com',
         'i': 'www.ifeng.com',
-        'a': 'iqiyi.com/',
+        'a': 'iqiyi.com',
         'g': 'github.com',
-        'd': 'douban.com/',
+        'd': 'douban.com',
         'j': 'www.jd.com',
         'l': 'bilibili.com',
         'z': 'zhihu.com',
-        'b': 'baidu.com',
-        'm': 'developer.mozilla.org'
+        'b': 'baidu.com'
     }
     console.log('246')
     var hashInLocalStorage = getFromLocalStorage('nav')
@@ -270,6 +284,16 @@ function generateKeyboard(keys, hash) {
             // kbd > img
             var img = createImg(hash[row[j]])
 
+            // kbd > popover
+            var popover = tag('span')
+            popover.className = 'popover'
+            popover.textContent = 'bilibili.com'
+
+            // kbd > popover > triangle
+            var triangle = tag('span')
+            triangle.className = 'triangle'
+            popover.appendChild(triangle)
+
             // kbd > span
             var span = createSpan(row[j])
             if (i === keysLength-1 && j === rowLength-1) {
@@ -293,6 +317,7 @@ function generateKeyboard(keys, hash) {
             // kbd
             var kbd = tag('kbd')
             kbd.appendChild(img)
+            kbd.appendChild(popover)
             kbd.appendChild(span)
             kbd.appendChild(featureDiv)
 
