@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
 }
+
 div {
     box-sizing: border-box;
 }
@@ -13,235 +14,206 @@ ul {
 
 body {
     background: #d6dee5 url(../images/bg.png) no-repeat center center;
-    /* filter: blur(1px); */
 }
 
-.container {
+body .container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* height: 100vh; */
     padding: 10px 10px;
-    
 }
 
-header {
-    margin: 30px 0 40px 0;
-    padding: 5px 5px;
+body .container .header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     width: 720px;
+    margin: 30px 0 40px 0;
+    padding: 5px 5px;
 }
 
-header .search {
-    /* border: 1px solid red; */
+body .container .header .search {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-header .search>input {
-    width: 400px;
+body .container .header .search input {
     display: inline-block;
-    outline: none;
-    border-style: none;
+    width: 400px;
+    padding: 8px 8px;
     line-height: 28px;
     font-size: 20px;
-    /* margin-right: 10px; */
     color: #353535;
-    padding: 8px 8px;
-    background-color: rgb(250, 250, 250);
+    outline: none;
+    border-style: none;
+    background-color: white;
 }
 
-header .search>input::-webkit-input-placeholder {
+body .container .header .search input::-webkit-input-placeholder {
     color: #d3d3d3;
 }
 
-header .search>svg {
-    /* border: 1px solid black; */
+body .container .header .search svg {
     width: 26px;
     height: 26px;
     padding: 9px;
     fill: skyblue;
-    background-color: rgb(250, 250, 250);
+    background-color: #fafafa;
 }
 
-header .search>svg:hover {
+body .container .header .search svg:hover {
     fill: red;
     cursor: pointer;
 }
 
-header>.action {
+body .container .header .action {
     margin-bottom: 10px;
 }
 
-header .action>button {
-    color: #373737;
-    font-size: 26px;
-    font-family: Arial, Helvetica, sans-serif;
+body .container .header .action button {
     display: inline-block;
     width: 80px;
     height: 50px;
     margin-right: 20px;
     border-color: transparent;
-    background: rgb(250, 250, 250);
     border-radius: 6px;
-    box-shadow: 0px 1px 0 1px rgba(177, 177, 177, 1), 0px 2px 0 1px rgba(151, 151, 151, 1), 0px 3px 0 1px rgba(101, 101, 101, 1), 0px 4px 2px 3px rgba(30, 30, 30, 1);
+    box-shadow: 0px 1px 0 1px #b1b1b1, 0px 2px 0 1px #979797, 0px 3px 0 1px #656565, 0px 4px 2px 3px #1e1e1e;
+    font-size: 26px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #373737;
+    background-color: white;
 }
-header .action>button:hover {
-  /* outline: none; */
-  color: #FF0000;
-  transform: scale(1.1);
-  transition: all 0.3s;
-  cursor: pointer;
-}
-header .action>button:focus {
+
+body .container .header .action button:focus {
     outline: none;
 }
 
-main {
+body .container .header .action button:hover {
+    color: #FF0000;
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: all 0.3s;
+}
+
+body .container main {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-footer {
-    margin: 50px 0 0 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-footer>span {
-    /* display: inline-block; */
-    font-size: 18px;
-    color: #353535;
-}
-
-.wrapper {
+body .container main .wrapper {
     display: inline-block;
-    background: rgba(255, 255, 255, 0.6);
-    border-radius: 10px;
     padding: 5px;
-    /* border: 1px solid orange; */
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.6);
 }
 
-.row {
-    padding: 5px 5px;
-    margin: 0px 20px;
-    /* border: 1px solid blue; */
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.wrapper>div:first-child {
+body .container main .wrapper div:first-child {
     margin-right: -20px;
 }
 
-.feature {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    /* border: 1px solid black; */
-    padding: 0 4px;
-    width: 100%;
-    position: absolute;
-    left: 0;
-    bottom: 2px;
-    opacity: 0;
+body .container main .wrapper div:last-child kbd:last-child {
+    display: inline-block;
+    position: relative;
+    width: 120px;
+    height: 50px;
+    margin: 10px 10px 10px 25px;
+    border-radius: 6px;
+    box-shadow: 0px 1px 0 1px #b1b1b1, 0px 2px 0 1px #979797, 0px 3px 0 1px #656565, 0px 4px 2px 3px #1e1e1e;
+    background: white;
 }
 
-kbd:hover>.feature {
-    opacity: 1;
-}
-kbd:hover>.feature > svg {
-    cursor: pointer;
-}
-
-.row:last-child>kbd:last-child>.feature {
+body .container main .wrapper div:last-child kbd:last-child img {
     display: none;
 }
 
-.icon {
-    width: 10px;
-    height: 10px;
-    fill: currentColor;
-    overflow: hidden;
-}
-.icon:hover {
-    fill: red;
+body .container main .wrapper div:last-child kbd:last-child span {
+    font-size: 20px;
+    margin: 14px 0 0 14px;
 }
 
-/*键盘按键css*/
+body .container main .wrapper div:last-child kbd:last-child .feature {
+    display: none;
+}
 
-kbd {
-    /* border: 1px solid red; */
+body .container main .wrapper .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 0px 20px;
+    padding: 5px 5px;
+}
+
+body .container main .wrapper .row kbd {
     display: inline-block;
     position: relative;
     width: 50px;
     height: 50px;
     margin: 10px;
     border-radius: 6px;
-    box-shadow: 0px 1px 0 1px rgba(177, 177, 177, 1), 0px 2px 0 1px rgba(151, 151, 151, 1), 0px 3px 0 1px rgba(101, 101, 101, 1), 0px 4px 2px 3px rgba(30, 30, 30, 1);
-    background: rgb(250, 250, 250);
+    box-shadow: 0px 1px 0 1px #b1b1b1, 0px 2px 0 1px #979797, 0px 3px 0 1px #656565, 0px 4px 2px 3px #1e1e1e;
+    background: #fafafa;
 }
 
-.row:last-child>kbd:last-child {
-    display: inline-block;
-    position: relative;
-    margin: 10px 10px 10px 25px;
-    width: 120px;
-    height: 50px;
-    background: rgb(250, 250, 250);
-    border-radius: 6px;
-    box-shadow: 0px 1px 0 1px rgba(177, 177, 177, 1), 0px 2px 0 1px rgba(151, 151, 151, 1), 0px 3px 0 1px rgba(101, 101, 101, 1), 0px 4px 2px 3px rgba(30, 30, 30, 1);
-}
-
-kbd:hover {
-    transform: scale(1.2)
-}
-
-kbd>span {
-    color: #373737;
-    font-size: 26px;
-    font-family: Arial, Helvetica, sans-serif;
-    text-transform: uppercase;
-    display: inline-block;
-    margin: 14px 0 0 18px;
-}
-
-.row:last-child>kbd:last-child>span {
-    font-size: 20px;
-    margin: 14px 0 0 14px;
-}
-
-kbd>img {
+body .container main .wrapper .row kbd img {
     position: absolute;
     width: 16px;
     height: 16px;
     left: 2px;
     top: 2px;
-    /* border: 1px solid red; */
 }
 
-.row:last-child>kbd:last-child>img {
-    display: none;
-}
-
-/*黑色键盘*/
-
-.black {
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(to bottom, #292929 0%, #111111 100%);
-    border: 1px solid #373737;
-    box-shadow: 0 0 2px 5px #1A1B1C, 0 0 0 2px #1F2020, 0 3px 0 2px #080808;
-    border-radius: 6px;
-    color: #C5C5C5;
-    position: relative;
-    font-size: 32px;
+body .container main .wrapper .row kbd span {
+    display: inline-block;
+    margin: 14px 0 0 18px;
+    font-size: 26px;
     font-family: Arial, Helvetica, sans-serif;
+    color: #373737;
+    text-transform: uppercase;
+}
+
+body .container main .wrapper .row kbd .feature {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 4px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    opacity: 0;
+}
+
+body .container main .wrapper .row kbd .feature svg {
+    width: 10px;
+    height: 10px;
+    fill: currentColor;
+    overflow: hidden;
+}
+
+body .container main .wrapper .row kbd .feature svg:hover {
+    fill: red;
+    cursor: pointer;
+}
+
+body .container main .wrapper .row kbd:hover {
+    transform: scale(1.2);
+}
+
+body .container main .wrapper .row kbd:hover .feature {
+    opacity: 1;
+}
+
+body .container footer {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body .container footer span {
+    font-size: 18px;
+    color: #353535;
 }
