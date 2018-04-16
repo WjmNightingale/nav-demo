@@ -197,7 +197,7 @@ function bindKbdHover(hash) {
             let key = targetElement.textContent
             let titleText = hash[key]
             if (titleText === undefined || titleText === '') {
-                titleText = '改键未关联导航网址'
+                titleText = '该键未关联导航网址'
             }
             if (targetElement.id === 'restore') {
                 titleText = '点击使用默认导航'
