@@ -1,0 +1,192 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+body {
+    background: #d6dee5 url(../images/bg.png) no-repeat center center;
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 10px;
+        .header {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 720px;
+            margin: 30px 0 40px 0;
+            padding: 5px 5px;
+            .search {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                input {
+                    display: inline-block;
+                    width: 400px;
+                    padding: 8px 8px;
+                    line-height: 28px;
+                    font-size: 20px;
+                    color: #353535;
+                    outline: none;
+                    border-style: none;
+                    background-color: white;
+                }
+                input::-webkit-input-placeholder {
+                    color: #d3d3d3;
+                }
+                svg {
+                    width: 26px;
+                    height: 26px;
+                    padding: 9px;
+                    fill: skyblue;
+                    background-color: rgb(250, 250, 250);
+                }
+                svg:hover {
+                    fill: red;
+                    cursor: pointer;
+                }
+            }
+            .action {
+                margin-bottom: 10px;
+                button {
+                    display: inline-block;
+                    width: 80px;
+                    height: 50px;
+                    margin-right: 20px;
+                    border-color: transparent;
+                    border-radius: 6px;
+                    box-shadow: 0px 1px 0 1px rgba(177, 177, 177, 1), 0px 2px 0 1px rgba(151, 151, 151, 1), 0px 3px 0 1px rgba(101, 101, 101, 1), 0px 4px 2px 3px rgba(30, 30, 30, 1);
+                    font-size: 26px;
+                    font-family: Arial, Helvetica, sans-serif;
+                    color: #373737;
+                    background-color: white;
+                }
+                button:focus {
+                    outline: none;
+                }
+                button:hover {
+                    color: #FF0000;
+                    cursor: pointer;
+                    transform: scale(1.1);
+                    transition: all 0.3s;
+                }
+            }
+        }
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .wrapper {
+                display: inline-block;
+                padding: 5px;
+                border-radius: 10px;
+                background-color: rgba(255, 255, 255, 0.6);
+                div:first-child {
+                    margin-right: -20px;
+                }
+                div:last-child {
+                    kbd:last-child {
+                        display: inline-block;
+                        position: relative;
+                        width: 120px;
+                        height: 50px;
+                        margin: 10px 10px 10px 25px;
+                        border-radius: 6px;
+                        box-shadow: 0px 1px 0 1px rgba(177, 177, 177, 1), 0px 2px 0 1px rgba(151, 151, 151, 1), 0px 3px 0 1px rgba(101, 101, 101, 1), 0px 4px 2px 3px rgba(30, 30, 30, 1);
+                        background: white;
+                        img {
+                            display: none;
+                        }
+                        span {
+                            font-size: 20px;
+                            margin: 14px 0 0 14px;
+                        }
+                        .feature {
+                            display: none;
+                        }
+                    }
+                }
+                .row {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    margin: 0px 20px;
+                    padding: 5px 5px;
+                    kbd {
+                        display: inline-block;
+                        position: relative;
+                        width: 50px;
+                        height: 50px;
+                        margin: 10px;
+                        border-radius: 6px;
+                        box-shadow: 0px 1px 0 1px rgba(177, 177, 177, 1), 0px 2px 0 1px rgba(151, 151, 151, 1), 0px 3px 0 1px rgba(101, 101, 101, 1), 0px 4px 2px 3px rgba(30, 30, 30, 1);
+                        background: rgb(250, 250, 250);
+                        img {
+                            position: absolute;
+                            width: 16px;
+                            height: 16px;
+                            left: 2px;
+                            top: 2px;
+                        }
+                        span {
+                            display: inline-block;
+                            margin: 14px 0 0 18px;
+                            font-size: 26px;
+                            font-family: Arial, Helvetica, sans-serif;
+                            color: #373737;
+                            text-transform: uppercase;
+                        }
+                        .feature {
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: space-between;
+                            width: 100%;
+                            padding: 0 4px;
+                            position: absolute;
+                            left: 0;
+                            bottom: 0;
+                            opacity: 0;
+                            svg {
+                                width: 10px;
+                                height: 10px;
+                                fill: currentColor;
+                                overflow: hidden;
+                            }
+                            svg:hover {
+                                fill: red;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                    kbd:hover {
+                        transform: scale(1.2);
+                        .feature {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+        footer {
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            span {
+                font-size: 18px;
+                color: #353535;
+            }
+        }
+    }
+}
