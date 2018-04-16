@@ -1,5 +1,4 @@
 //初始化数据
-// localStorage.clear()
 var hashA = init()
 var keys = hashA['keys']
 var hash = hashA['hash']
@@ -12,8 +11,11 @@ generateKeyboard(keys, hash)
 listenToUser(hash)
 
 //下面是工具函数
-function getFromLocalStorage(name) {
-    return JSON.parse(localStorage.getItem(name) || 'null')
+function getFromLocalStorage(key) {
+    return JSON.parse(localStorage.getItem(key) || 'null')
+}
+function saveDataToLocalStorage(key,obj) {
+    localStorage.setItem(key,JSON.stringify(obj) || 'null')
 }
 
 function tag(tagName) {
@@ -33,15 +35,22 @@ function bindEdit() {
             let targetImg = e.target.parentNode.previousSibling.previousSibling
             let key = e.target.parentNode.previousSibling.textContent
             var editSite = prompt('请输入新的自定义网址')
-            if (editSite) {
-                hash[key] = editSite
-                targetImg.src = `http://${editSite}/favicon.ico`
-                targetImg.onerror = (e) => {
-                    e.target.src = './cry.png'
-                    alert('Soory,请确认输入的自定义网址是否有误')
-                }
+            console.log('---',editSite)
+            if (editSite.trim().length !== 0) {
+                console.log('2222')
+            } else {
+                console.log('不允许为空')
             }
-            localStorage.setItem('nav', JSON.stringify(hash))
+            // if (editSite) {
+            //     hash[key] = editSite
+            //     targetImg.src = `http://${editSite}/favicon.ico`
+            //     targetImg.onerror = (e) => {
+            //         e.target.src = './cry.png'
+            //         alert('Soory,请确认输入的自定义网址是否有误')
+            //     }
+            // }
+            // localStorage.setItem('nav', JSON.stringify(hash))
+            var reg = '^(([a-zA-Z]{1})|([a-zA-Z]{1}[a-zA-Z]{1})|([a-zA-Z]{1}[0-9]{1})|([0-9]{1}[a-zA-Z]{1})|([a-zA-Z0-9][a-zA-Z0-9-_]{1,61}[a-zA-Z0-9]))\.([a-zA-Z]{2,6}|[a-zA-Z0-9-]{2,30}\.[a-zA-Z]{2,3})$'
         }, false)
     })
 }
@@ -65,7 +74,7 @@ function bindReset() {
     resetButtons.forEach((resetButton) => {
         resetButton.addEventListener('click', (e) => {
             let targetImg = e.target.parentNode.previousSibling.previousSibling
-            targetImg.src = './cleared-1.png'
+            targetImg.src = './cleared.png'
             let key = e.target.parentNode.previousSibling.textContent
             hash[key] = ''
             localStorage.setItem('nav', JSON.stringify(hash))
@@ -127,9 +136,9 @@ function createImg(domain) {
     if (domain != undefined && domain !== '') {
         img.src = 'http://' + domain + '/favicon.ico'
     } else if (domain === '') {
-        img.src = 'cleared-1.png'
+        img.src = 'cleared.png'
     } else {
-        img.src = 'emotion-black.png'
+        img.src = 'emotion.png'
     }
 
     img.onerror = function (event) {
@@ -217,7 +226,6 @@ function restoreDefault() {
 }
 
 function init() {
-    console.log('init----')
     var keys = {
         '0': {
             0: '1',
@@ -271,18 +279,18 @@ function init() {
         'length': 4
     }
     var hash = {
-        'w': 'weibo.com',
-        'e': '163.com',
-        't': 'taobao.com',
-        'i': 'www.ifeng.com',
-        'a': 'iqiyi.com',
-        'g': 'github.com',
-        'd': 'douban.com',
-        'j': 'www.jd.com',
-        'l': 'bilibili.com',
-        'z': 'zhihu.com',
-        'b': 'baidu.com',
-        'm': 'developer.mozilla.org'
+        // 'w': 'weibo.com',
+        // 'e': '163.com',
+        // 't': 'taobao.com',
+        // 'i': 'www.ifeng.com',
+        // 'a': 'iqiyi.com',
+        // 'g': 'github.com',
+        // 'd': 'douban.com',
+        // 'j': 'www.jd.com',
+        // 'l': 'bilibili.com',
+        // 'z': 'zhihu.com',
+        // 'b': 'baidu.com',
+        // 'm': 'developer.mozilla.org'
     }
     var searchEngine = {
         'g': 'https://www.google.com/search?q=',
@@ -346,9 +354,9 @@ function generateKeyboard(keys, hash) {
 }
 
 function listenToUser(hash) {
-    document.onkeypress = function (event) {
-        var key = event['key']
-        var website = hash[key]
+    document.addEventListener('keypress',(e) => {
+        let key = e.key
+        let website = hash[key]
         window.open('http://' + website, '_blank')
-    }
+    },false)
 }
