@@ -24,7 +24,7 @@ body .container {
     padding: 10px 10px;
 }
 
-body .container .header {
+body .container header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -33,13 +33,13 @@ body .container .header {
     padding: 5px 5px;
 }
 
-body .container .header .search {
+body .container header .search {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-body .container .header .search input {
+body .container header .search input {
     display: inline-block;
     width: 400px;
     padding: 8px 8px;
@@ -51,11 +51,11 @@ body .container .header .search input {
     background-color: white;
 }
 
-body .container .header .search input::-webkit-input-placeholder {
+body .container header .search input::-webkit-input-placeholder {
     color: #d3d3d3;
 }
 
-body .container .header .search svg {
+body .container header .search> svg {
     width: 26px;
     height: 26px;
     padding: 9px;
@@ -63,16 +63,16 @@ body .container .header .search svg {
     background-color: #fafafa;
 }
 
-body .container .header .search svg:hover {
+body .container header .search svg:hover {
     fill: red;
     cursor: pointer;
 }
 
-body .container .header .action {
+body .container header .action {
     margin-bottom: 10px;
 }
 
-body .container .header .action button {
+body .container header .action button {
     display: inline-block;
     width: 80px;
     height: 50px;
@@ -86,11 +86,11 @@ body .container .header .action button {
     background-color: white;
 }
 
-body .container .header .action button:focus {
+body .container header .action button:focus {
     outline: none;
 }
 
-body .container .header .action button:hover {
+body .container header .action button:hover {
     color: #FF0000;
     cursor: pointer;
     transform: scale(1.1);
