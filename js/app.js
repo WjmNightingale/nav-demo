@@ -75,6 +75,8 @@ function init() {
     generateKeyboard(keys, hash)
     // 监听键盘按键
     bindKeyboard(hash)
+    // 鼠标点击
+    bindKbdClick(hash)
     // 悬浮提示网址
     bindKbdHover(hash)
     // 修改导航网址
@@ -137,6 +139,17 @@ function bindKeyboard(hash) {
         let website = hash[key]
         window.open(`http://${website}`, '_blank')
     }, false)
+}
+// 鼠标点击
+function bindKbdClick(hash) {
+    let kbds = getElementsBySelector('.wrapper kbd')
+    kbds.forEach((kbd) => {
+        kbd.addEventListener('click',(e) => {
+            let key = kbd.childNodes[1].textContent
+            let website = hash[key]
+            window.open(`http://${website}`, '_blank')
+        },false)
+    })
 }
 
 // 修改导航网址
